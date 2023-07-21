@@ -1,0 +1,25 @@
+{
+  "name": "edash",
+  "version": "1.0.0",
+  "description": "A simple Electron dashboard.",
+  "main": "main.js",
+  "scripts": {
+    "start": "astro build && electron .",
+    "build": "astro build",
+    "astro-dev": "astro dev",
+    "astro-start": "astro start",
+    "astro-preview": "astro preview"
+  },
+  "author": "mageic-dev",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^25.3.1",
+    "tailwindcss": "^3.3.3"
+  },
+  "dependencies": {
+    "@astrojs/solid-js": "^2.2.0",
+    "@astrojs/tailwind": "^4.0.0",
+    "astro": "^2.9.0",
+    "solid-js": "^1.7.8"
+  }
+}

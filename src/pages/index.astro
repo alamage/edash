@@ -1,0 +1,30 @@
+---
+import { DateTime } from "../components/DateTime.tsx"; 
+
+const title = "edash";
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content-="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>{title}</title>
+  </head>
+  <body class="w-screen h-screen">
+    <div
+      class="w-full h-full flex items-center justify-center select-none bg-black text-white"
+    >
+      <div>
+        <DateTime client:load />
+      </div>
+    </div>
+  </body>
+</html>
