@@ -1,5 +1,6 @@
 ---
 import { DateTime } from "../components/DateTime.tsx"; 
+import { PowerManagement } from "../components/PowerManagement.tsx";
 
 const title = "edash";
 ---
@@ -20,10 +21,13 @@ const title = "edash";
   </head>
   <body class="w-screen h-screen">
     <div
-      class="w-full h-full flex items-center justify-center select-none bg-black text-white"
+      class="w-full h-full flex flex-col items-center justify-center select-none bg-black text-white"
     >
       <div>
         <DateTime client:load />
+      </div>
+      <div class="mt-10">
+        <PowerManagement client:load /> 
       </div>
     </div>
   </body>

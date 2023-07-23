@@ -6,7 +6,10 @@ An `Electron` extendable dashboard concept using web technologies:
 - `Tailwind` for styling
 - `Astro` for static generation
 
-Currently just shows the date and time.
+Currently has:
+
+- Date and time
+- Power management buttons (Suspend, Reboot, Shutdown)
 
 ## Testing
 
@@ -45,3 +48,13 @@ bindsym $mod+grave [class="dash"] scratchpad show, move absolute position center
 ```
 
 Replace path to directory and adjust hotkey as needed.
+
+## Suspend script
+
+Using a script file for suspend (`systemctl suspend` doesn't run correctly when invoking from `child_process` for some reason).
+
+Make the script executable:
+
+```sh
+chmod +x ./suspend
+```
