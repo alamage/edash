@@ -1,11 +1,12 @@
 # edash
 
-An `Electron` extendable dashboard concept using `SolidJS` and `TailwindCSS`. 
+An `Electron` extendable dashboard concept using `SolidJS` and `TailwindCSS`.
 
 Currently has:
 
 - Date and time
 - Power management buttons (Suspend, Reboot, Shutdown)
+- Volume control
 
 ## Testing
 
