@@ -4,8 +4,20 @@ contextBridge.exposeInMainWorld("bridge", {
   node: () => process.versions.node,
   chrome: () => process.versions.chrome,
   electron: () => process.versions.electron,
+
+  isFocused: () => ipcRenderer.invoke("isFocused"),
+
   ping: () => ipcRenderer.invoke("ping"),
+
   suspend: () => ipcRenderer.invoke("suspend"),
   reboot: () => ipcRenderer.invoke("reboot"),
   shutdown: () => ipcRenderer.invoke("shutdown"),
+
+  getVolume: () => ipcRenderer.invoke("getVolume"),
+
+  registerOnFocus: (functionToRun) =>
+    ipcRenderer.invoke.invoke("registerOnFocus", functionToRun),
+
+  registerOnBlur: (functionToRun) =>
+    ipcRenderer.invoke("registerOnBlur", functionToRun),
 });

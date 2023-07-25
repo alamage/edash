@@ -1,10 +1,12 @@
-import { createSignal, type Component } from "solid-js";
+import { createSignal, onMount, type Component } from "solid-js";
 
 const [dateTime, setDateTime] = createSignal<Date>(new Date());
 
-setInterval(() => {
-  setDateTime(new Date());
-}, 1000);
+onMount(() => {
+  setInterval(() => {
+    setDateTime(new Date());
+  }, 1000);
+});
 
 export const DateTime: Component = () => {
   return (

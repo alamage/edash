@@ -1,25 +1,30 @@
 {
   "name": "edash",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "A simple Electron dashboard.",
   "main": "main.js",
   "scripts": {
-    "start": "astro build && electron .",
-    "build": "astro build",
-    "astro-dev": "astro dev",
-    "astro-start": "astro start",
-    "astro-preview": "astro preview"
+    "start": "vite build && electron .",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "author": "mageic-dev",
   "license": "MIT",
   "devDependencies": {
+    "@solidjs/router": "^0.8.2",
+    "@types/node": "^20.4.4",
+    "autoprefixer": "^10.4.14",
     "electron": "^25.3.1",
-    "tailwindcss": "^3.3.3"
+    "postcss": "^8.4.27",
+    "solid-devtools": "^0.27.4",
+    "tailwindcss": "^3.3.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.7",
+    "vite-plugin-solid": "^2.7.0"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^2.2.0",
-    "@astrojs/tailwind": "^4.0.0",
-    "astro": "^2.9.0",
     "solid-js": "^1.7.8"
   }
 }
