@@ -12,4 +12,5 @@ contextBridge.exposeInMainWorld("bridge", {
   shutdown: () => ipcRenderer.invoke("shutdown"),
 
   getVolume: () => ipcRenderer.invoke("getVolume"),
+  setVolume: (volume) => ipcRenderer.invoke("setVolume", volume),
 });

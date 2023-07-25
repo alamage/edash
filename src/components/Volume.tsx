@@ -11,12 +11,6 @@ onMount(() => {
   }, 200);
 });
 
-const toggleMute = () => {
-  bridge.getVolume().then((value) => {
-    setVolume(value);
-  });
-};
-
 export const Volume: Component = () => {
   return (
     <div class="flex flex-col">
@@ -28,8 +22,11 @@ export const Volume: Component = () => {
         max="100"
         step="10"
         value={volume()}
+        onChange={(e) => {
+          setVolume(parseInt(e.target.value));
+          bridge.setVolume(volume());
+        }}
       />
-      <button onclick={toggleMute}>[X]</button>
     </div>
   );
 };

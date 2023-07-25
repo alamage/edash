@@ -15,7 +15,7 @@ const createWindow = () => {
   });
 
   win.menuBarVisible = false;
-  //win.loadFile("dist/index.html");
+  win.loadFile("dist/index.html");
 };
 
 app.whenReady().then(() => {
@@ -80,6 +80,20 @@ app.whenReady().then(() => {
     });
   });
 
+  ipcMain.handle("setVolume", async (event, volume) => {
+    console.log("setVolume called");
+    console.log(volume);
+    exec(`pactl set-sink-volume 0 ${volume}%`, (error, stdout, stderr) => {
+      if (error) {
+        console.log(`error: ${error.message}`);
+      }
+      if (stderr) {
+        console.log(`stderr: ${stderr}`);
+      }
+      console.log(`stdout: ${stdout}}`);
+    });
+  });
+
   createWindow();
 
   app.on("activate", () => {
@@ -93,13 +107,15 @@ app.whenReady().then(() => {
     if (process.platform !== "darwin") app.quit();
   });
 
-  app.on("browser-window-focus", () => {
-    console.log("browser-window-focus");
-    win.loadFile("dist/index.html");
-  });
-
-  app.on("browser-window-blur", () => {
-    console.log("browser-window-blur event");
-    win.loadFile("");
-  });
+  //  app.on("browser-window-focus", () => {
+  //    console.log("browser-window-focus");
+  //    win.loadFile("dist/index.html");
+  //  });
+  //
+  //  app.on("browser-window-blur", () => {
+  //    console.log("browser-window-blur event");
+  //    win.loadFile("");
+  //    //app.quit();
+  //    //win.close();
+  //  });
 });
