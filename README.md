@@ -1,10 +1,6 @@
 # edash
 
-An `Electron` extendable dashboard concept using web technologies:
-
-- `SolidJS` for building individual components
-- `Tailwind` for styling
-- `Astro` for static generation
+An `Electron` extendable dashboard concept using `SolidJS` and `TailwindCSS`. 
 
 Currently has:
 
@@ -17,10 +13,10 @@ Currently has:
 npm run start
 
 # test on browser
-npm run astro-dev
+npm run dev
 
 # running directly from electron
-electron /path/to/folder/
+electron .
 ```
 
 ## Dependencies
