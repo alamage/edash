@@ -14,6 +14,9 @@ const App: Component = () => {
           <PowerManagement />
         </div>
       </div>
+      <div>
+        <Volume />
+      </div>
     </div>
   );
 };

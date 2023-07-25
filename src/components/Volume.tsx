@@ -2,10 +2,9 @@ import { createSignal, onMount, type Component } from "solid-js";
 
 declare var bridge;
 const [volume, setVolume] = createSignal(0);
-let timer;
 
 onMount(() => {
-  timer = setInterval(() => {
+  setInterval(() => {
     bridge.getVolume().then((value) => {
       setVolume(value);
     });

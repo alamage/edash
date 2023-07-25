@@ -2,15 +2,12 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const { exec } = require("child_process");
 
-let observersOnFocus = [];
-let observersOnBlur = [];
-
-let isFocused = false;
-
+let win = null;
 const createWindow = () => {
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 500,
     height: 250,
+    backgroundColor: "#000000",
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       sandbox: false,
@@ -18,37 +15,18 @@ const createWindow = () => {
   });
 
   win.menuBarVisible = false;
-  win.loadFile("dist/index.html");
+  //win.loadFile("dist/index.html");
 };
 
 app.whenReady().then(() => {
-  ipcMain.handle("isFocused", () => {
-    return isFocused;
-  });
-
-  ipcMain.handle("registerOnFocus", (functionToRun) => {
-    console.log("registerOnFocus called");
-    observersOnFocus.push(functionToRun);
-    console.log(observersOnFocus.length);
-  });
-
-  ipcMain.handle("registerOnBlur", (functionToRun) => {
-    console.log("registerOnBlur called");
-    observersOnBlur.push(functionToRun);
-    console.log(observersOnBlur.length);
-  });
-
-  ipcMain.handle("registerOnFocus2", () => {
-    console.log("registerOnFocus bare");
-  });
-
   ipcMain.handle("ping", () => {
     console.log("pinged");
     return "pong";
   });
 
   ipcMain.handle("suspend", () => {
-    exec("./suspend", (error, stdout, stderr) => {
+    //exec("$HOME/suspend", (error, stdout, stderr) => {
+    exec("systemctl suspend", (error, stdout, stderr) => {
       if (error) {
         console.log(`error: ${error.message}`);
       }
@@ -84,6 +62,7 @@ app.whenReady().then(() => {
   });
 
   ipcMain.handle("getVolume", async () => {
+    console.log("getVolume called");
     return new Promise((resolve, reject) => {
       exec(
         "pactl get-sink-volume 0 | awk '{print $5}'",
@@ -104,6 +83,7 @@ app.whenReady().then(() => {
   createWindow();
 
   app.on("activate", () => {
+    console.log("activate");
     // Open a window if none are open (macOS)
     if (BrowserWindow.getAllWindows().length == 0) createWindow();
   });
@@ -115,22 +95,11 @@ app.whenReady().then(() => {
 
   app.on("browser-window-focus", () => {
     console.log("browser-window-focus");
-    isFocused = true;
-
-    console.log(observersOnFocus.length);
-    for (const toRun of observersOnFocus) {
-      console.log("calling toRun on " + toRun.toString());
-      toRun();
-    }
+    win.loadFile("dist/index.html");
   });
 
   app.on("browser-window-blur", () => {
     console.log("browser-window-blur event");
-    isFocused = false;
-
-    for (const toRun of observersOnBlur) {
-      console.log("calling toRun on " + toRun.toString());
-      toRun();
-    }
+    win.loadFile("");
   });
 });
