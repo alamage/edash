@@ -3,12 +3,18 @@ import { createSignal, onMount, type Component } from "solid-js";
 declare var bridge;
 const [volume, setVolume] = createSignal(0);
 
-onMount(() => {
-  setInterval(() => {
-    bridge.getVolume().then((value) => {
-      setVolume(value);
-    });
-  }, 200);
+function resyncVolume() {
+  bridge.getVolume().then((value) => {
+    setVolume(value);
+  });
+}
+
+window.addEventListener("focus", () => {
+  resyncVolume();
+  const timer = setInterval(() => {
+    resyncVolume();
+  }, 500);
+  window.addEventListener("blur", () => clearInterval(timer));
 });
 
 export const Volume: Component = () => {
@@ -23,8 +29,8 @@ export const Volume: Component = () => {
         step="10"
         value={volume()}
         onChange={(e) => {
+          bridge.setVolume(parseInt(e.target.value));
           setVolume(parseInt(e.target.value));
-          bridge.setVolume(volume());
         }}
       />
     </div>

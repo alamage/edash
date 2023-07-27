@@ -2,11 +2,15 @@ import { createSignal, onMount, type Component } from "solid-js";
 
 const [dateTime, setDateTime] = createSignal<Date>(new Date());
 
-onMount(() => {
-  setInterval(() => {
+window.addEventListener("focus", () => {
+  setDateTime(new Date());
+  const timer = setInterval(() => {
     setDateTime(new Date());
   }, 1000);
+  window.addEventListener("blur", () => clearInterval(timer));
 });
+
+onMount(() => {});
 
 export const DateTime: Component = () => {
   return (

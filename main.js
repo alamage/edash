@@ -12,8 +12,8 @@ const createWindow = () => {
       preload: path.join(__dirname, "preload.js"),
       sandbox: false,
     },
+    title: "edash",
   });
-
   win.menuBarVisible = false;
   win.loadFile("dist/index.html");
 };
@@ -109,13 +109,19 @@ app.whenReady().then(() => {
 
   //  app.on("browser-window-focus", () => {
   //    console.log("browser-window-focus");
-  //    win.loadFile("dist/index.html");
+  //    const wm_name = app.getName();
+  //    if (wm_name.endsWith(" [inactive]")) {
+  //      app.setName(wm_name.replace(/ \[inactive\]$/, ""));
+  //      console.log(app.getName());
+  //    }
   //  });
   //
   //  app.on("browser-window-blur", () => {
   //    console.log("browser-window-blur event");
-  //    win.loadFile("");
-  //    //app.quit();
-  //    //win.close();
+  //    const wm_name = app.getName();
+  //    if (!wm_name.endsWith(" [inactive]")) {
+  //      app.setName(wm_name + " [inactive]");
+  //      console.log(app.getName());
+  //    }
   //  });
 });
