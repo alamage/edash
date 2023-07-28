@@ -1,4 +1,4 @@
-import { createSignal, type Component } from "solid-js";
+import { type Component } from "solid-js";
 import { Today } from "./components/Today";
 import { Time } from "./components/Time";
 import { PowerManagement } from "./components/PowerManagement";

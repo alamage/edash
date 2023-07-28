@@ -12,7 +12,7 @@ export const DashButton: Component<Props> = ({
   children,
 }) => {
   return (
-    <div class="group relative w-max">
+    <div class="group relative w-max flex justify-center items-center">
       <button class="hover:cursor-pointer" onClick={onclick}>
         {children}
       </button>
