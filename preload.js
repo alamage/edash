@@ -13,4 +13,6 @@ contextBridge.exposeInMainWorld("bridge", {
 
   getVolume: () => ipcRenderer.invoke("getVolume"),
   setVolume: (volume) => ipcRenderer.invoke("setVolume", volume),
+  getMuteState: () => ipcRenderer.invoke("getMuteState"),
+  toggleMute: () => ipcRenderer.invoke("toggleMute"),
 });

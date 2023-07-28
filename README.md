@@ -8,6 +8,8 @@ Currently has:
 - Power management buttons (Suspend, Reboot, Shutdown)
 - Volume control
 
+![screenshot](screenshot.png)
+
 ## Testing
 
 ```sh
@@ -45,13 +47,3 @@ bindsym $mod+grave [class="dash"] scratchpad show, move absolute position center
 ```
 
 Replace path to directory and adjust hotkey as needed.
-
-## Suspend script
-
-Using a script file for suspend (`systemctl suspend` doesn't run correctly when invoking from `child_process` for some reason).
-
-Make the script executable:
-
-```sh
-chmod +x ./suspend
-```
