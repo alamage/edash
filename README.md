@@ -2,6 +2,8 @@
 
 An `Electron` extendable dashboard concept using `SolidJS` and `TailwindCSS`.
 
+> **Use [tdash](https://github.com/mageic-dev/edash) instead. Tauri is much more efficient than Electron.**
+
 Currently has:
 
 - Date and time
